@@ -20,7 +20,7 @@ use crate::{
     Instantiate,
   },
 };
-use pyo3::prelude::pyclass;
+use pyo3::prelude::{pyclass, pymethods};
 use regex::Regex;
 use serde_derive::Deserialize;
 use std::collections::HashMap;
@@ -43,13 +43,16 @@ pub enum PatternType {
 #[derive(Deserialize, Debug, Clone, Default, PartialEq, Hash, Eq)]
 pub struct CGPattern(pub String);
 
+#[pymethods]
+impl CGPattern {
+  pub(crate) fn pattern(&self) -> String {
+    self.0.to_string()
+  }
+}
+
 impl CGPattern {
   pub(crate) fn new(query: String) -> Self {
     Self(query)
-  }
-
-  pub(crate) fn pattern(&self) -> String {
-    self.0.to_string()
   }
 
   pub(crate) fn extract_regex(&self) -> Result<Regex, regex::Error> {
