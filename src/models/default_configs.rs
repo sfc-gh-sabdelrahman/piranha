@@ -193,6 +193,10 @@ pub(crate) fn default_is_seed_rule() -> bool {
   true
 }
 
+pub(crate) fn default_keep_comment_regexes() -> HashSet<String> {
+  HashSet::new()
+}
+
 pub(crate) fn default_allow_dirty_ast() -> bool {
   false
 }
@@ -203,4 +207,8 @@ pub(crate) fn default_graph_validation() -> bool {
 
 pub(crate) fn default_experiment_dyn() -> bool {
   false
+}
+
+pub(crate) fn default_path_to_custom_builtin_rules() -> String {
+  String::new()
 }
