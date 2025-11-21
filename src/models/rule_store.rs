@@ -190,7 +190,7 @@ impl RuleStore {
     candidate_files
   }
 
-  /// Gets all the files from the code base that (i) have the language appropriate file extension, and (ii) satisfy include/exclude glob pattern
+  /// Gets all the files from the code base that satisfy include/exclude glob pattern
   fn get_candidate_files_from_dir(
     &self, p2codebase: &String, include: &Vec<Pattern>, exclude: &Vec<Pattern>,
   ) -> HashMap<PathBuf, String> {
@@ -203,8 +203,6 @@ impl RuleStore {
       .filter(|f| include.is_empty() || include.iter().any(|p| p.matches_path(&f.path())))
       // filter out all excluded paths (if any)
       .filter(|f| exclude.is_empty() || exclude.iter().all(|p| !p.matches_path(&f.path())))
-      // filter files with the desired extension
-      .filter(|de| self.language().can_parse(&de.path()))
       // read the file
       .map(|f| (f.path(), read_file(&f.path()).unwrap()))
       .collect();
