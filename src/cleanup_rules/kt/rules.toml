@@ -489,7 +489,7 @@ is_seed_rule = false
 [[rules.filters]]
 enclosing_node = "(source_file) @sf"
 not_contains = [
-  "(class_declaration) @cd",
+  "(class_declaration5) @cd",
   "(object_declaration) @od",
   "(function_declaration) @fd",
   "(property_declaration) @pd",
@@ -573,7 +573,7 @@ is_seed_rule = false
 # Check if there is no assignment where the variable @variable_name is 
 # assigned to a value other than @init, within the method body
 [[rules.filters]]
-enclosing_node = "(class_declaration) @cd"
+enclosing_node = "(class_declaration6) @cd"
 not_contains = [
   """(
 (assignment (directly_assignable_expression (simple_identifier)@a.lhs) (_)@a.rhs)    @assignment

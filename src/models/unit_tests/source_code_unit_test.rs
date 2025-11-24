@@ -641,7 +641,7 @@ fn test_satisfies_outermost_enclosing_node() {
       (#eq? @name \"foobar\")
       )",
     filters= [filter!{
-      , outermost_enclosing_node = "(class_declaration) @cd"
+      , outermost_enclosing_node = "(class_declaration13) @cd"
       , contains = "((method_invocation name: (_) @mname) @mi (#eq? @mname \"foobar\"))"
     }]
   };
@@ -654,7 +654,7 @@ fn test_satisfies_outermost_enclosing_node() {
       (#eq? @name \"foobar\")
       )",
     filters= [filter!{
-      , outermost_enclosing_node = "(class_declaration) @cd"
+      , outermost_enclosing_node = "(class_declaration14) @cd"
       , not_contains = ["((method_invocation name: (_) @mname) @mi (#eq? @mname \"foobar\"))",]
     }]
   };

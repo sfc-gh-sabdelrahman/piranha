@@ -507,7 +507,7 @@ is_seed_rule = false
 # Check if there is no assignment where the variable @variable_name is 
 # assigned to a value other than @init, within the method body
 [[rules.filters]]
-enclosing_node = "(class_declaration) @cd"
+enclosing_node = "(class_declaration3) @cd"
 not_contains = ["""(
 ((assignment_expression
                     left: (_) @a.lhs
@@ -579,7 +579,7 @@ not_contains = [
 [[rules.filters]]
 # There should exist no field declaration named `@variable_name` and
 # there should be no assignments to @variable_name that are not same as `@init`.
-enclosing_node = "(class_declaration) @cd"
+enclosing_node = "(class_declaration4) @cd"
 not_contains = ["""(
 ((assignment_expression
                     left: (_) @a.lhs
