@@ -18,7 +18,7 @@
 
 [[rules]]
 name = "simplify_parenthesized_expression"
-query = "(parenthesized_expression ([(true) (false) (identifier)] @expression)) @p_expr"
+query = "(parenthesized_expression ([(true) (false) (identifier) (call_expression)] @expression)) @p_expr"
 replace = "@expression"
 replace_node = "p_expr"
 is_seed_rule = false
