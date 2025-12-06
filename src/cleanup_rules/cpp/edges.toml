@@ -49,9 +49,13 @@ to = [
   "delete_parent_assignment",
 ]
 
+# Only clean up blocks when cleaning up if statements like
+# "if (true) { } else {}", but not when cleaning up ternaries.
+# Trying to clean up ternaries in this fashion can result in
+# deleting the outermost parentheses of a function definition.
 [[edges]]
 scope = "Parent"
-from = "if_cleanup"
+from = "if_statement_cleanup"
 to = ["remove_unnecessary_nested_block"]
 
 [[edges]]

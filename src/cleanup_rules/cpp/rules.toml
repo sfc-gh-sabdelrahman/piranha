@@ -35,7 +35,7 @@ groups = ["boolean_expression_simplify"]
 #  { doSomething(); } 
 #
 [[rules]]
-groups = ["if_cleanup"]
+groups = ["if_cleanup", "if_statement_cleanup"]
 name = "simplify_if_statement_true_1"
 query = """cs if (true) :[consequence] else :[alternative]"""
 replace = "@consequence"
@@ -43,7 +43,7 @@ replace_node = "*"
 is_seed_rule = false
 
 [[rules]]
-groups = ["if_cleanup"]
+groups = ["if_cleanup", "if_statement_cleanup"]
 name = "simplify_if_statement_true_2"
 query = """cs if (true) :[consequence]"""
 replace = "@consequence"
@@ -51,7 +51,7 @@ replace_node = "*"
 is_seed_rule = false
 
 [[rules]]
-groups = ["if_cleanup"]
+groups = ["if_cleanup", "if_statement_cleanup"]
 name = "simplify_if_statement_false_1"
 query = """cs if (false) :[consequence] else :[alternative]"""
 replace = "@alternative"
@@ -59,7 +59,7 @@ replace_node = "*"
 is_seed_rule = false
 
 [[rules]]
-groups = ["if_cleanup"]
+groups = ["if_cleanup", "if_statement_cleanup"]
 name = "simplify_if_statement_false_2"
 query = """cs if (false) :[consequence]"""
 replace = ""
@@ -111,18 +111,12 @@ is_seed_rule = false
 [[rules]]
 name = "remove_unnecessary_nested_block"
 query = """
-(
-    ((compound_statement)*
-        (compound_statement
-            (_)* @pre
-            (compound_statement (_)* @nested.statements) @nested.block
-            (_)* @post
-        )
-    )
-@block)"""
+(compound_statement (_)* @nested.statements) @nested.block
+"""
 replace = "@nested.statements"
 replace_node = "nested.block"
 is_seed_rule = false
+
 
 # Before :
 #  true && abc()
